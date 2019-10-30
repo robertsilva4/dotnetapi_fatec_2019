@@ -3,3 +3,15 @@
 ################################################################################
 
 /.vs/dotnetapi_fatec_2019/v16
+/.vs
+/Store/.vs/Store/config
+/Store/.vs/Store/v16
+/Store/packages
+/Store/Store.Api/bin
+/Store/Store.Api/obj/Debug
+/Store/Store.BusinessLogic/bin/Debug
+/Store/Store.BusinessLogic/obj/Debug
+/Store/Store.Model.Entities/bin/Debug
+/Store/Store.Model.Entities/obj/Debug
+/Store/Store.Model.Infrastucture/bin/Debug
+/Store/Store.Model.Infrastucture/obj/Debug
