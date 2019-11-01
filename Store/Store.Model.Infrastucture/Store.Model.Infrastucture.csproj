@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,7 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Casts\DataCast.cs" />
+    <Compile Include="Configuration\Config.cs" />
+    <Compile Include="DataAcess\BaseDao.cs" />
+    <Compile Include="DataAcess\CarrinhoDao.cs" />
+    <Compile Include="DataAcess\CategoriaDao.cs" />
+    <Compile Include="DataAcess\ClienteDao.cs" />
+    <Compile Include="DataAcess\ProdutoDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sql\Connection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Store.Model.Entities\Store.Model.Entities.csproj">
+      <Project>{CF97997E-EE95-40A0-9D80-CA8E74045118}</Project>
+      <Name>Store.Model.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
