@@ -41,10 +41,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\CarrinhoBL.cs" />
+    <Compile Include="BL\CategoriaBL.cs" />
+    <Compile Include="BL\ClienteBL.cs" />
+    <Compile Include="BL\Interfaces\ICarrinhoBL.cs" />
+    <Compile Include="BL\Interfaces\ICategoriaBL.cs" />
+    <Compile Include="BL\Interfaces\IClienteBL.cs" />
+    <Compile Include="BL\Interfaces\IProdutoBL.cs" />
+    <Compile Include="BL\ProdutoBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="BL\Interfaces\" />
+    <ProjectReference Include="..\Store.Model.Entities\Store.Model.Entities.csproj">
+      <Project>{CF97997E-EE95-40A0-9D80-CA8E74045118}</Project>
+      <Name>Store.Model.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Store.Model.Infrastucture\Store.Model.Infrastucture.csproj">
+      <Project>{10C8DAB9-7610-4BB0-9710-ADECDCBE032A}</Project>
+      <Name>Store.Model.Infrastucture</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

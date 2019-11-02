@@ -42,6 +42,21 @@ namespace Store.Model.Infrastucture.DataAcess
         public abstract List<TObject> CastToObject(SqlDataReader Reader);
         protected abstract void SqlBase();
 
+        public void Transaction(params Action<Connection>[] actions)
+        {
+            try
+            {
+                this._connectionSql.BeginTransaction();
+                actions.ToList().ForEach(a => a.Invoke(this._connectionSql));
+                this._connectionSql.Commit();
+            }
+            catch (Exception error)
+            {
+                this._connectionSql.RollBack();
+                throw error;
+            }
+        }
+
         public void Dispose() => 
             _connectionSql.Dispose();
     }

@@ -50,6 +50,7 @@
     <Compile Include="DataAcess\CategoriaDao.cs" />
     <Compile Include="DataAcess\ClienteDao.cs" />
     <Compile Include="DataAcess\ProdutoDao.cs" />
+    <Compile Include="Hash\HashMD5.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sql\Connection.cs" />
   </ItemGroup>

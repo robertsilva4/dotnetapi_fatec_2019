@@ -12,6 +12,9 @@ namespace Store.Model.Infrastucture.DataAcess
 {
     public class CategoriaDao : BaseDao<Categoria>
     {
+        public CategoriaDao() { }
+        public CategoriaDao(Connection connection) : base(connection) { }
+
         public override List<Categoria> CastToObject(SqlDataReader Reader)
         {
             List<Categoria> Categorias = new List<Categoria>();

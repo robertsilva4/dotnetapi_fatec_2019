@@ -10,6 +10,7 @@ namespace Store.Model.Infrastucture.Sql
     public class Connection : IDisposable
     {
         private readonly SqlConnection _sqlConnection;
+        private SqlTransaction _sqltransaction;
 
         public Connection()
         {
@@ -23,6 +24,7 @@ namespace Store.Model.Infrastucture.Sql
             {
                 SqlCommand command = new SqlCommand(Sql.ToString(), _sqlConnection);
                 command.Parameters.AddRange(Parameters.ToArray());
+                command.Transaction = this._sqltransaction;
                 return command.ExecuteScalar();
 
             }
@@ -54,6 +56,21 @@ namespace Store.Model.Infrastucture.Sql
                 Sql.Clear();
                 Parameters.Clear();
             }
+        }
+
+        public void BeginTransaction()
+        {
+            _sqltransaction = _sqlConnection.BeginTransaction();
+        }
+
+        public void Commit()
+        {
+            _sqltransaction?.Commit();
+        }
+
+        public void RollBack()
+        {
+            _sqltransaction?.Rollback();
         }
 
         public void Dispose()

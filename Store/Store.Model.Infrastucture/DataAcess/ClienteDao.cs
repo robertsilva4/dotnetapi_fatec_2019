@@ -1,5 +1,6 @@
 ﻿using Store.Model.Entities;
 using Store.Model.Infrastucture.Casts;
+using Store.Model.Infrastucture.Sql;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,6 +12,9 @@ namespace Store.Model.Infrastucture.DataAcess
 {
     public class ClienteDao : BaseDao<Cliente>
     {
+        public ClienteDao() { }
+        public ClienteDao(Connection connection) : base(connection) { }
+
         public override List<Cliente> CastToObject(SqlDataReader Reader)
         {
             List<Cliente> Clientes = new List<Cliente>();

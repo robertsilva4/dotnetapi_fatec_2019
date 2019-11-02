@@ -1,5 +1,6 @@
 ﻿using Store.Model.Entities;
 using Store.Model.Infrastucture.Casts;
+using Store.Model.Infrastucture.Sql;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,6 +12,9 @@ namespace Store.Model.Infrastucture.DataAcess
 {
     public class ProdutoDao : BaseDao<Produto>
     {
+        public ProdutoDao() { }
+        public ProdutoDao(Connection connection) : base(connection) { }
+
         public override List<Produto> CastToObject(SqlDataReader Reader)
         {
             List<Produto> Produtos = new List<Produto>();
@@ -53,7 +57,7 @@ namespace Store.Model.Infrastucture.DataAcess
             }
         }
 
-        public List<Produto> Select(int id)
+        public Produto Select(int id)
         {
             this.SqlBase();
             base.Sql.Append(" WHERE TB_PRODUTO.ID = @ID_PRODUTO ");
@@ -62,7 +66,7 @@ namespace Store.Model.Infrastucture.DataAcess
 
             using (var Reader = base.ExecuteReader())
             {
-                return this.CastToObject(Reader);
+                return this.CastToObject(Reader).FirstOrDefault();
             }
         }
 

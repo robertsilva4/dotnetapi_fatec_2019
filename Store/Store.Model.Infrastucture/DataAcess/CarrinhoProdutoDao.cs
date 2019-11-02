@@ -1,5 +1,6 @@
 ﻿using Store.Model.Entities;
 using Store.Model.Infrastucture.Casts;
+using Store.Model.Infrastucture.Sql;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,6 +12,8 @@ namespace Store.Model.Infrastucture.DataAcess
 {
     public class CarrinhoProdutoDao : BaseDao<CarrinhoProduto>
     {
+        public CarrinhoProdutoDao() { }
+        public CarrinhoProdutoDao(Connection connection) : base(connection) { }
         public override List<CarrinhoProduto> CastToObject(SqlDataReader Reader)
         {
             List<CarrinhoProduto> Itens = new List<CarrinhoProduto>();
