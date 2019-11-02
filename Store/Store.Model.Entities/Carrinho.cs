@@ -13,5 +13,6 @@ namespace Store.Model.Entities
         public double ValorTotal { get; set; }
 
         public Cliente Cliente { get; set; }
+        public List<CarrinhoProduto> Produtos { get; set; }
     }
 }

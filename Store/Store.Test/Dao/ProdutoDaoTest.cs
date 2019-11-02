@@ -25,7 +25,7 @@ namespace Store.Test.Dao
         {
             using (var dao = new ProdutoDao())
             {
-                var produto = dao.SelectById(1);
+                var produto = dao.Select(1);
             }
         }
 

@@ -46,6 +46,7 @@
     <Compile Include="Configuration\Config.cs" />
     <Compile Include="DataAcess\BaseDao.cs" />
     <Compile Include="DataAcess\CarrinhoDao.cs" />
+    <Compile Include="DataAcess\CarrinhoProdutoDao.cs" />
     <Compile Include="DataAcess\CategoriaDao.cs" />
     <Compile Include="DataAcess\ClienteDao.cs" />
     <Compile Include="DataAcess\ProdutoDao.cs" />

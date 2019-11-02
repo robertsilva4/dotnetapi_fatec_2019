@@ -15,8 +15,17 @@ namespace Store.Model.Infrastucture.DataAcess
         {
             List<Produto> Produtos = new List<Produto>();
             while (Reader.Read())
+            {
                 Produtos.Add(DataCast.CastProduto(Reader));
+            }
             return Produtos;
+        }
+
+        public void Delete(int id)
+        {
+            base.Sql.Append(" DELETE FROM TB_PRODUTO WHERE ID = @ID ");
+            base.AddParameter("@ID", id);
+            base.ExecuteComand();
         }
 
         protected override void SqlBase()
@@ -37,11 +46,14 @@ namespace Store.Model.Infrastucture.DataAcess
         public List<Produto> Select()
         {
             this.SqlBase();
+
             using (var Reader = base.ExecuteReader())
+            {
                 return this.CastToObject(Reader);
+            }
         }
 
-        public List<Produto> SelectById(int id)
+        public List<Produto> Select(int id)
         {
             this.SqlBase();
             base.Sql.Append(" WHERE TB_PRODUTO.ID = @ID_PRODUTO ");
@@ -49,7 +61,9 @@ namespace Store.Model.Infrastucture.DataAcess
             base.AddParameter("@ID_PRODUTO", id);
 
             using (var Reader = base.ExecuteReader())
+            {
                 return this.CastToObject(Reader);
+            }
         }
 
         public List<Produto> SelectByCategoria(int idCategoria)
@@ -60,7 +74,9 @@ namespace Store.Model.Infrastucture.DataAcess
             base.AddParameter("@ID_CATEGORIA", idCategoria);
 
             using (var Reader = base.ExecuteReader())
+            {
                 return this.CastToObject(Reader);
+            }
         }
     }
 }

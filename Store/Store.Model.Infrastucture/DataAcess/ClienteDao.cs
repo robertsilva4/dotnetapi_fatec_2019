@@ -1,4 +1,5 @@
 ﻿using Store.Model.Entities;
+using Store.Model.Infrastucture.Casts;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -15,13 +16,7 @@ namespace Store.Model.Infrastucture.DataAcess
             List<Cliente> Clientes = new List<Cliente>();
             while (Reader.Read())
             {
-                Clientes.Add(new Cliente()
-                {
-                    Cpf = Convert.ToString(Reader["CPF"]),
-                    Email = Convert.ToString(Reader["EMAIL"]),
-                    Id = Convert.ToInt32(Reader["ID"]),
-                    Nome = Convert.ToString(Reader["NOME"])
-                });
+                Clientes.Add(DataCast.CastCliente(Reader));
             }
             return Clientes;
         }
@@ -73,10 +68,12 @@ namespace Store.Model.Infrastucture.DataAcess
         {
             this.SqlBase();
             using (var Reader = base.ExecuteReader())
+            {
                 return this.CastToObject(Reader);
+            }
         }
 
-        public Cliente SelectById(int id)
+        public Cliente Select(int id)
         {
             this.SqlBase();
             base.Sql.Append(" WHERE ID = @ID ");
@@ -84,10 +81,12 @@ namespace Store.Model.Infrastucture.DataAcess
             base.AddParameter("@ID", id);
 
             using (var Reader = base.ExecuteReader())
+            {
                 return this.CastToObject(Reader).FirstOrDefault();
+            }
         }
 
-        public Cliente SelectByLogin(Cliente cliente)
+        public Cliente Select(Cliente cliente)
         {
             this.SqlBase();
             base.Sql.Append(" WHERE EMAIL = @EMAIL AND SENHA = @SENHA ");
@@ -96,7 +95,9 @@ namespace Store.Model.Infrastucture.DataAcess
             base.AddParameter("@SENHA", cliente.Senha);
 
             using (var Reader = base.ExecuteReader())
+            {
                 return this.CastToObject(Reader).FirstOrDefault();
+            }
         }
     }
 }

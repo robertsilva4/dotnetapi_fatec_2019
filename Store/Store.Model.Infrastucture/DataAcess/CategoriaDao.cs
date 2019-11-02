@@ -16,7 +16,9 @@ namespace Store.Model.Infrastucture.DataAcess
         {
             List<Categoria> Categorias = new List<Categoria>();
             while (Reader.Read())
+            {
                 Categorias.Add(DataCast.CastCategoria(Reader));
+            }
             return Categorias;
         }
 
@@ -25,7 +27,9 @@ namespace Store.Model.Infrastucture.DataAcess
             this.SqlBase();
 
             using (var Reader = base.ExecuteReader())
+            {
                 return this.CastToObject(Reader);
+            }
         }
 
         protected override void SqlBase()

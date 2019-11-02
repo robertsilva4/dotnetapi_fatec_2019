@@ -42,5 +42,25 @@ namespace Store.Model.Infrastucture.Casts
                 Valor = Convert.ToDouble(Reader["PRODUTO_VALOR"])
             };
         }
+
+        public static Carrinho CasCarrinho(SqlDataReader Reader)
+        {
+            return new Carrinho()
+            {
+                Cliente = CastCliente(Reader),
+                DataCompra = Convert.ToDateTime(Reader["CARRINHO_DATA_COMPRA"]),
+                Id = Convert.ToInt32(Reader["CARRINHO_ID"]),
+                ValorTotal = Convert.ToDouble(Reader["CARRINHO_VALOR_TOTAL"])
+            };
+        }
+
+        public static CarrinhoProduto CasCarrinhoProduto(SqlDataReader Reader)
+        {
+            return new CarrinhoProduto()
+            {
+                Produto = CastProduto(Reader),
+                Quantidade = Convert.ToInt32(Reader["CARRINHO_PRODUTO_QUANTIDADE"])
+            };
+        }
     }
 }
