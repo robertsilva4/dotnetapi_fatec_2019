@@ -20,7 +20,12 @@ namespace Store.Model.Infrastucture.DataAcess
             List<Carrinho> Carrinhos = new List<Carrinho>();
             while (Reader.Read())
             {
-                Carrinhos.Add(DataCast.CasCarrinho(Reader));
+                var carrinho = DataCast.CasCarrinho(Reader);
+                using(var CarrinhoProdutoDao = new CarrinhoProdutoDao())
+                {
+                    carrinho.Produtos = CarrinhoProdutoDao.Select(carrinho.Id);
+                }
+                Carrinhos.Add(carrinho);
             }
             return Carrinhos;
         }

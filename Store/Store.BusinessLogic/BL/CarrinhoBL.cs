@@ -30,6 +30,12 @@ namespace Store.BusinessLogic.BL
 
         public Carrinho Inserir(Carrinho carrinho)
         {
+            carrinho.DataCompra = DateTime.Now;
+            carrinho.Produtos.ForEach(p =>
+            {
+                carrinho.ValorTotal += (p.Quantidade * p.Produto.Valor);
+            });
+
             this._carrinhoDao.Transaction(
                 conn =>
                 {
@@ -39,6 +45,7 @@ namespace Store.BusinessLogic.BL
                 {
                     carrinho.Produtos.ForEach(produto =>
                     {
+                        produto.Carrinho = carrinho;
                         new CarrinhoProdutoDao(conn).Insert(produto);
                     });
                 }

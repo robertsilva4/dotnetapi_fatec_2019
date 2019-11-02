@@ -49,6 +49,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\CarrinhoBLTest.cs" />
+    <Compile Include="BL\CategoriaBLTest.cs" />
+    <Compile Include="BL\ClienteBLTest.cs" />
+    <Compile Include="BL\ProdutoBLTest.cs" />
     <Compile Include="Dao\CategoriaDaoTest.cs" />
     <Compile Include="Dao\ProdutoDaoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
