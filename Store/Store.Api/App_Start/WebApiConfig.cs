@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using SimpleInjector;
+using SimpleInjector.Lifestyles;
+using Store.BusinessLogic.BL.Interfaces;
+using Store.BusinessLogic.BL;
+using SimpleInjector.Integration.WebApi;
 
 namespace Store.Api
 {
@@ -22,12 +27,29 @@ namespace Store.Api
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
             config.EnableCors();
 
+            ConfigureDependencyInjection();
+
             //SwaggerConfig.Register();
+        }
+
+        public static void ConfigureDependencyInjection()
+        {
+            var container = new Container();
+            container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
+
+            container.Register<ICarrinhoBL, CarrinhoBL>(Lifestyle.Scoped);
+            container.Register<ICategoriaBL, CategoriaBL>(Lifestyle.Scoped);
+            container.Register<IClienteBL, ClienteBL>(Lifestyle.Scoped);
+            container.Register<IProdutoBL, ProdutoBL>(Lifestyle.Scoped);
+
+            container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
+            container.Verify();
+            GlobalConfiguration.Configuration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
         }
     }
 }
