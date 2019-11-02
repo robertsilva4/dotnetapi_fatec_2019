@@ -10,20 +10,13 @@ using System.Web.Http.Description;
 namespace Store.Api.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class BaseController<TIBLInjected> : ApiController, IDisposable
-        where TIBLInjected : IDisposable
+    public class BaseController<TIBLInjected> : ApiController
     {
         protected TIBLInjected BLInjected;
 
         public BaseController(TIBLInjected BLInjectable)
         {
             this.BLInjected = BLInjectable;
-        }
-
-        [ApiExplorerSettings(IgnoreApi = true)]
-        public void Dispose()
-        {
-            this.BLInjected.Dispose();
         }
     }
 }
