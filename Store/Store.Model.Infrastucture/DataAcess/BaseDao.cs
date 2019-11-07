@@ -40,6 +40,7 @@ namespace Store.Model.Infrastucture.DataAcess
             _connectionSql.Reader(this.Sql, this._sqlParameters);
 
         public abstract List<TObject> CastToObject(SqlDataReader Reader);
+
         protected abstract void SqlBase();
 
         public void Transaction(params Action<Connection>[] actions)

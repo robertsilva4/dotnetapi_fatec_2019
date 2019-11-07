@@ -34,8 +34,7 @@ namespace Store.Model.Infrastucture.DataAcess
 
         protected override void SqlBase()
         {
-            base.Sql.Append(" SELECT ");
-            base.Sql.Append("    TB_PRODUTO.DESCRICAO AS PRODUTO_DESCRICAO, ");
+            base.Sql.Append(" SELECT ");            
             base.Sql.Append("    TB_PRODUTO.ID AS PRODUTO_ID, ");
             base.Sql.Append("    TB_PRODUTO.ID_CATEGORIA AS PRODUTO_ID_CATEGORIA, ");
             base.Sql.Append("    TB_PRODUTO.IMAGEM AS PRODUTO_IMAGEM, ");

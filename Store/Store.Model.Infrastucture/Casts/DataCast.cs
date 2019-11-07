@@ -35,7 +35,6 @@ namespace Store.Model.Infrastucture.Casts
             return new Produto()
             {
                 Categoria = CastCategoria(Reader),
-                Descricao = Convert.ToString(Reader["PRODUTO_DESCRICAO"]),
                 Id = Convert.ToInt32(Reader["PRODUTO_ID"]),
                 Imagem = Convert.ToString(Reader["PRODUTO_IMAGEM"]),
                 Nome = Convert.ToString(Reader["PRODUTO_NOME"]),
