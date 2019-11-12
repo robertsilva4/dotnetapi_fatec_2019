@@ -23,9 +23,10 @@ namespace Store.BusinessLogic.BL
             return this._produtoDao.Select(idProduto);
         }
 
-        public List<Produto> ConsultarPorCategoria(int idCategoria)
+        public PaginaProduto ConsultarPorCategoria(PaginaProduto PaginaProduto)
         {
-            return this._produtoDao.SelectByCategoria(idCategoria);
+            PaginaProduto.Produtos = this._produtoDao.SelectByCategoria(PaginaProduto);
+            return PaginaProduto;
         }
 
         public void Deletar(int idProduto)

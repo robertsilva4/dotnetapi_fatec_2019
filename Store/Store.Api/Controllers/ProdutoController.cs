@@ -25,8 +25,8 @@ namespace Store.Api.Controllers
         public Produto Consultar([FromUri] int id) =>
             base.BLInjected.Consultar(id);
 
-        [HttpGet]
-        public List<Produto> ConsultarPorCategoria([FromUri] int id) =>
-            base.BLInjected.ConsultarPorCategoria(id);
+        [HttpPost]
+        public PaginaProduto ConsultarPorCategoria([FromBody] PaginaProduto PaginaProduto) =>
+            base.BLInjected.ConsultarPorCategoria(PaginaProduto);
     }
 }

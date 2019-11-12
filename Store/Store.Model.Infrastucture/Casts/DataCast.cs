@@ -66,9 +66,10 @@ namespace Store.Model.Infrastucture.Casts
         {
             return new Contadores()
             {
-                NumeroPagina = Convert.ToInt32(Reader["TOTAL_PAGINAS"]),
+                TotalPaginas = Convert.ToInt32(Reader["TOTAL_PAGINAS"]),
                 TamanhoPagina = Convert.ToInt32(Reader["TAMANHO_PAGINA"]),
-                Total = Convert.ToInt32(Reader["TOTAL_ITENS"])
+                Total = Convert.ToInt32(Reader["TOTAL_ITENS"]),
+                NumeroPagina = 1
             };
         }
     }

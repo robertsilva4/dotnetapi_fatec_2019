@@ -59,6 +59,7 @@ namespace Store.Model.Infrastucture.DataAcess
         public Produto Select(int id)
         {
             this.SqlBase();
+
             base.Sql.Append(" WHERE TB_PRODUTO.ID = @ID_PRODUTO ");
 
             base.AddParameter("@ID_PRODUTO", id);
@@ -69,18 +70,21 @@ namespace Store.Model.Infrastucture.DataAcess
             }
         }
 
-        public List<Produto> SelectByCategoria(int idCategoria)
+        public List<Produto> SelectByCategoria(PaginaProduto PaginaProduto)
         {
             this.SqlBase();
 
             base.Sql.Append(" WHERE TB_PRODUTO.ID_CATEGORIA = @ID_CATEGORIA ");
+            this.Sql.Append(" ORDER BY TB_PRODUTO.ID ");
+            this.Sql.Append(" OFFSET((@NUMERO_PAGINA - 1) * @TAMANHO_PAGINA) ROWS ");
+            this.Sql.Append(" FETCH NEXT @TAMANHO_PAGINA ROWS ONLY; ");
 
-            base.AddParameter("@ID_CATEGORIA", idCategoria);
+            base.AddParameter("@ID_CATEGORIA", PaginaProduto.Categoria.Id);
+            base.AddParameter("@NUMERO_PAGINA", PaginaProduto.Contadores.NumeroPagina);
+            base.AddParameter("@TAMANHO_PAGINA", PaginaProduto.Contadores.TamanhoPagina);
 
             using (var Reader = base.ExecuteReader())
-            {
                 return this.CastToObject(Reader);
-            }
         }
     }
 }

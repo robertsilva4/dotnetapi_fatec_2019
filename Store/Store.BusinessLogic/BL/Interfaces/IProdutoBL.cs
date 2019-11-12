@@ -12,6 +12,6 @@ namespace Store.BusinessLogic.BL.Interfaces
         void Deletar(int idProduto);
         List<Produto> Listar();
         Produto Consultar(int idProduto);
-        List<Produto> ConsultarPorCategoria(int idCategoria);
+        PaginaProduto ConsultarPorCategoria(PaginaProduto pagina);
     }
 }
