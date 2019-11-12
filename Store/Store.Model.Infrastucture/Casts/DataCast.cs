@@ -61,5 +61,15 @@ namespace Store.Model.Infrastucture.Casts
                 Quantidade = Convert.ToInt32(Reader["CARRINHO_PRODUTO_QUANTIDADE"])
             };
         }
+
+        public static Contadores CastContadores(SqlDataReader Reader)
+        {
+            return new Contadores()
+            {
+                NumeroPagina = Convert.ToInt32(Reader["TOTAL_PAGINAS"]),
+                TamanhoPagina = Convert.ToInt32(Reader["TAMANHO_PAGINA"]),
+                Total = Convert.ToInt32(Reader["TOTAL_ITENS"])
+            };
+        }
     }
 }

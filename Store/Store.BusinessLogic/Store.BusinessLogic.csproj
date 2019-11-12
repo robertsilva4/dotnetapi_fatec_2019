@@ -44,9 +44,11 @@
     <Compile Include="BL\CarrinhoBL.cs" />
     <Compile Include="BL\CategoriaBL.cs" />
     <Compile Include="BL\ClienteBL.cs" />
+    <Compile Include="BL\ContadoresBL.cs" />
     <Compile Include="BL\Interfaces\ICarrinhoBL.cs" />
     <Compile Include="BL\Interfaces\ICategoriaBL.cs" />
     <Compile Include="BL\Interfaces\IClienteBL.cs" />
+    <Compile Include="BL\Interfaces\IContadoresBL.cs" />
     <Compile Include="BL\Interfaces\IProdutoBL.cs" />
     <Compile Include="BL\ProdutoBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

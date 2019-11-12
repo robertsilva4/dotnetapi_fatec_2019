@@ -72,6 +72,7 @@ namespace Store.Model.Infrastucture.DataAcess
         public List<Produto> SelectByCategoria(int idCategoria)
         {
             this.SqlBase();
+
             base.Sql.Append(" WHERE TB_PRODUTO.ID_CATEGORIA = @ID_CATEGORIA ");
 
             base.AddParameter("@ID_CATEGORIA", idCategoria);

@@ -46,6 +46,7 @@ namespace Store.Api
             container.Register<ICategoriaBL, CategoriaBL>(Lifestyle.Scoped);
             container.Register<IClienteBL, ClienteBL>(Lifestyle.Scoped);
             container.Register<IProdutoBL, ProdutoBL>(Lifestyle.Scoped);
+            container.Register<IContadoresBL, ContadoresBL>(Lifestyle.Scoped);
 
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
             container.Verify();
