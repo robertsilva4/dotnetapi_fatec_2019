@@ -17,3 +17,8 @@
 /Store/Store.Model.Infrastucture/obj/Debug
 /Store/Store.Test/bin/Debug
 /Store/Store.Test/obj/Debug
+/Store/Store.Api/obj/Release
+/Store/Store.BusinessLogic/obj/Release
+/Store/Store.Model.Entities/obj/Release
+/Store/Store.Model.Infrastucture/obj/Release
+/Store/Store.Test/obj/Release

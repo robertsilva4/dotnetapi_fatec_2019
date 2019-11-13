@@ -28,9 +28,5 @@ namespace Store.Api.Controllers
         [HttpGet]
         public Cliente Consultar([FromUri] int id) =>
             base.BLInjected.Consultar(id);
-
-        [HttpPost]
-        public Cliente Logar([FromBody] Cliente cliente) =>
-            base.BLInjected.Logar(cliente);
     }
 }
