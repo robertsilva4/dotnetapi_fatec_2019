@@ -25,7 +25,7 @@ namespace Store.Test.BL
         {
             using (var bl = new ProdutoBL())
             {
-                var produtos = bl.ConsultarPorCategoria(1);
+                // var produtos = bl.ConsultarPorCategoria(1);
             }
         }
 

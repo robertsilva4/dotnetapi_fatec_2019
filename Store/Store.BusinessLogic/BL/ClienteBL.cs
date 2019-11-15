@@ -21,6 +21,7 @@ namespace Store.BusinessLogic.BL
 
         public Cliente Atualizar(Cliente cliente)
         {
+            cliente.Senha = HashMD5.GetHash(cliente.Senha);
             return this._clienteDao.Update(cliente);
         }
 

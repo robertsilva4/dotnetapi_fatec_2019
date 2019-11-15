@@ -14,13 +14,13 @@ namespace Store.Api.Controllers
         public CarrinhoController(ICarrinhoBL BLInjectable) : base(BLInjectable) { }
 
 
-        [HttpGet]
-        public Carrinho Consultar([FromUri] int id) =>
-            base.BLInjected.Consultar(id);
+        //[HttpGet]
+        //public Carrinho Consultar([FromUri] int id) =>
+        //    base.BLInjected.Consultar(id);
 
         [HttpGet]
-        public List<Carrinho> ConsultarPorCliente([FromUri] int id) =>
-            base.BLInjected.ConsultarPorCliente(id);
+        public List<Carrinho> ConsultarPorCliente([FromUri] int idCliente) =>
+            base.BLInjected.ConsultarPorCliente(idCliente);
 
         [HttpPost]
         public Carrinho Inserir([FromBody] Carrinho carrinho) =>

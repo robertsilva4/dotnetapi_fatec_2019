@@ -44,10 +44,11 @@ namespace Store.Model.Infrastucture.DataAcess
         public Cliente Update(Cliente cliente)
         {
             base.Sql.Append(" UPDATE TB_CLIENTE SET ");
-            base.Sql.Append("   NOME = @NOME ");
+            base.Sql.Append("   NOME = @NOME, SENHA = @SENHA ");
             base.Sql.Append(" WHERE ID = @ID ");
 
             base.AddParameter("@NOME", cliente.Nome);
+            base.AddParameter("@SENHA", cliente.Senha);
             base.AddParameter("@ID", cliente.Id);
 
             base.ExecuteComand();
