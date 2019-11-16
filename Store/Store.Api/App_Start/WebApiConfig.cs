@@ -9,6 +9,8 @@ using SimpleInjector.Lifestyles;
 using Store.BusinessLogic.BL.Interfaces;
 using Store.BusinessLogic.BL;
 using SimpleInjector.Integration.WebApi;
+using Store.Api.Providers;
+using Microsoft.Owin.Security.OAuth;
 
 namespace Store.Api
 {
@@ -17,6 +19,8 @@ namespace Store.Api
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            config.SuppressDefaultHostAuthentication();
+            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             // Web API routes
             config.MapHttpAttributeRoutes();

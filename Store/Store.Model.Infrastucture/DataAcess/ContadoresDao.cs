@@ -1,11 +1,8 @@
-﻿using Store.Model.Entities;
-using Store.Model.Infrastucture.Casts;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Store.Model.Entities;
+using Store.Model.Infrastucture.Casts;
 
 namespace Store.Model.Infrastucture.DataAcess
 {
@@ -24,6 +21,7 @@ namespace Store.Model.Infrastucture.DataAcess
         public Contadores SelectNumeroPaginasProduto(PaginaProduto Pagina)
         {
             this.SqlBase();
+
             base.Sql.Append(" WHERE TB_CATEGORIA.ID = @ID_CATEGORIA ");
 
             this.AddParameter("@ID_CATEGORIA", Pagina.Categoria.Id);
