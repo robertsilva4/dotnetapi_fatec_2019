@@ -34,7 +34,7 @@ namespace Store.Test.Dao
         {
             using (var dao = new ProdutoDao())
             {
-                var produtos = dao.SelectByCategoria(1);
+                //var produtos = dao.SelectByCategoria(1);
             }
         }
     }
