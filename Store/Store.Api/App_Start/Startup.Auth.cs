@@ -22,7 +22,7 @@ namespace Store.Api
             {
                 TokenEndpointPath = new PathString("/api/Token"),
                 Provider = new ApplicationOAuthProvider(),
-                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(10),
+                AccessTokenExpireTimeSpan = TimeSpan.FromHours(24),
                 AllowInsecureHttp = true
             });
         }

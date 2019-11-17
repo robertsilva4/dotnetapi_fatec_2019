@@ -1,4 +1,5 @@
-﻿using Store.BusinessLogic.BL.Interfaces;
+﻿using Store.Api.Models;
+using Store.BusinessLogic.BL.Interfaces;
 using Store.Model.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,8 @@ using System.Web.Http;
 
 namespace Store.Api.Controllers
 {
+    [Authorize]
+    [CarregarCliente]
     public class CarrinhoController : BaseController<ICarrinhoBL>
     {
         public CarrinhoController(ICarrinhoBL BLInjectable) : base(BLInjectable) { }
@@ -19,11 +22,16 @@ namespace Store.Api.Controllers
         /// <param name="id">Id do cliente</param>
         /// <returns></returns>
         [HttpGet]
-        public List<Carrinho> ConsultarPorCliente([FromUri] int id) =>
-            base.BLInjected.ConsultarPorCliente(id);
+        public List<Carrinho> ConsultarPorCliente()
+        {
+            return base.BLInjected.ConsultarPorCliente(base.Cliente.Id);
+        }
 
         [HttpPost]
-        public Carrinho Inserir([FromBody] Carrinho carrinho) =>
-            base.BLInjected.Inserir(carrinho);
+        public Carrinho Inserir([FromBody] Carrinho carrinho)
+        {
+            carrinho.Cliente = base.Cliente;
+            return base.BLInjected.Inserir(carrinho);
+        }
     }
 }

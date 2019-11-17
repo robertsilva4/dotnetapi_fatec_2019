@@ -11,7 +11,7 @@ namespace Store.Api.Controllers
         }
 
         [HttpPost]
-        public Contadores BucarContadoresProduto(PaginaProduto PaginaProduto) =>
+        public Contadores BuscarContadoresProduto(PaginaProduto PaginaProduto) =>
             this.BLInjected.BuscarContadoresProduto(PaginaProduto);
     }
 }

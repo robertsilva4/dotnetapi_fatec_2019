@@ -1,4 +1,5 @@
-﻿using Store.BusinessLogic.BL.Interfaces;
+﻿using Store.Api.Models;
+using Store.BusinessLogic.BL.Interfaces;
 using Store.Model.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Web.Http;
 
 namespace Store.Api.Controllers
 {
+    [CarregarCliente]
     public class ClienteController : BaseController<IClienteBL>
     {
         public ClienteController(IClienteBL BLInjectable) : base(BLInjectable) { }
@@ -18,15 +20,13 @@ namespace Store.Api.Controllers
             base.BLInjected.Inserir(cliente);
 
         [HttpPut]
+        [Authorize]
         public Cliente Atualizar([FromBody] Cliente cliente) =>
             base.BLInjected.Atualizar(cliente);
 
         [HttpGet]
-        public List<Cliente> Listar() =>
-            base.BLInjected.Listar();
-
-        [HttpGet]
-        public Cliente Consultar([FromUri] int id) =>
-            base.BLInjected.Consultar(id);
+        [Authorize]
+        public Cliente Consultar() =>
+            base.BLInjected.Consultar(base.Cliente.Id);
     }
 }

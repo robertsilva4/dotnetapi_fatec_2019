@@ -22,6 +22,7 @@ namespace Store.Api.Providers
                     var identity = new ClaimsIdentity(context.Options.AuthenticationType);
                     identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
                     identity.AddClaim(new Claim("user", UsuarioLogado.Email));
+                    identity.AddClaim(new Claim("idUser", UsuarioLogado.Id.ToString()));
                     context.Validated(identity);
                 }
                 else
@@ -38,6 +39,8 @@ namespace Store.Api.Providers
 
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
         {
+            context.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+
             foreach (KeyValuePair<string, string> property in context.Properties.Dictionary)
             {
                 context.AdditionalResponseParameters.Add(property.Key, property.Value);

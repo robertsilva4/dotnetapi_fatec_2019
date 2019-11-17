@@ -11,6 +11,7 @@ using Store.BusinessLogic.BL;
 using SimpleInjector.Integration.WebApi;
 using Store.Api.Providers;
 using Microsoft.Owin.Security.OAuth;
+using System.Web.Http.Cors;
 
 namespace Store.Api
 {
@@ -34,7 +35,9 @@ namespace Store.Api
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            config.EnableCors();
+
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
 
             ConfigureDependencyInjection();
 
