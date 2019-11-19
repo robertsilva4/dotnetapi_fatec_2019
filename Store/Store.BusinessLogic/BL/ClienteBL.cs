@@ -12,44 +12,37 @@ namespace Store.BusinessLogic.BL
 {
     public class ClienteBL : IClienteBL
     {
-        private ClienteDao _clienteDao;
-
         public ClienteBL()
         {
-            this._clienteDao = new ClienteDao();
         }
 
         public Cliente Atualizar(Cliente cliente)
         {
-            cliente.Senha = HashMD5.GetHash(cliente.Senha);
-            return this._clienteDao.Update(cliente);
+            throw new NotImplementedException();
         }
 
         public Cliente Consultar(int idCliente)
         {
-            return this._clienteDao.Select(idCliente);
+            throw new NotImplementedException();
         }
 
         public Cliente Inserir(Cliente cliente)
         {
-            cliente.Senha = HashMD5.GetHash(cliente.Senha);
-            return this._clienteDao.Insert(cliente);
+            throw new NotImplementedException();
         }
 
         public List<Cliente> Listar()
         {
-            return this._clienteDao.Select();
+            throw new NotImplementedException();
         }
 
         public Cliente Logar(Cliente cliente)
         {
-            cliente.Senha = HashMD5.GetHash(cliente.Senha);
-            return this._clienteDao.Select(cliente);
+            throw new NotImplementedException();
         }
 
         public void Dispose()
         {
-            this._clienteDao.Dispose();
         }
     }
 }

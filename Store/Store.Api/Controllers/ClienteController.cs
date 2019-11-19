@@ -17,16 +17,16 @@ namespace Store.Api.Controllers
 
         [HttpPost]
         public Cliente Inserir([FromBody] Cliente cliente) =>
-            base.BLInjected.Inserir(cliente);
+             throw new NotImplementedException();
 
         [HttpPut]
         [Authorize]
         public Cliente Atualizar([FromBody] Cliente cliente) =>
-            base.BLInjected.Atualizar(cliente);
+             throw new NotImplementedException();
 
         [HttpGet]
         [Authorize]
         public Cliente Consultar() =>
-            base.BLInjected.Consultar(base.Cliente.Id);
+             throw new NotImplementedException();
     }
 }
