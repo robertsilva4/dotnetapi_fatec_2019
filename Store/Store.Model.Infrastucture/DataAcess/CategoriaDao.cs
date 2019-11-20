@@ -13,17 +13,32 @@ namespace Store.Model.Infrastucture.DataAcess
 
         public override List<Categoria> CastToObject(SqlDataReader Reader)
         {
-            throw new NotImplementedException();
+            List<Categoria> Categorias = new List<Categoria>();
+
+            while (Reader.Read())
+            {
+                Categoria categoria = new Categoria();
+                categoria.Id = Convert.ToInt32(Reader["ID"]);
+                categoria.Descricao = Convert.ToString(Reader["DESCRICAO"]);
+                Categorias.Add(categoria);
+            }
+
+            return Categorias;
         }
 
         public List<Categoria> Select()
         {
-            throw new NotImplementedException();
+            this.SqlBase();
+            using (var Reader = base.ExecuteReader())
+            {
+                return this.CastToObject(Reader);
+            }
         }
 
         protected override void SqlBase()
         {
-            throw new NotImplementedException();
+            this.Sql.Append("SELECT * FROM TB_CATEGORIA");
         }
     }
 }
+

@@ -14,19 +14,31 @@ namespace Store.Api.Controllers
         public ProdutoController(IProdutoBL BLInjected) : base(BLInjected) { }
 
         [HttpGet]
-        public List<Produto> Listar() =>
-            base.BLInjected.Listar();
+        public List<Produto> Listar()
+        {
+            return base.BLInjected.Listar();
+        }
+            
 
         [HttpDelete]
-        public void Deletar([FromUri] int id) =>
-            base.BLInjected.Deletar(id);
+        public void Deletar([FromUri] int id)
+        {
+             base.BLInjected.Deletar(id);
+        }
+            
 
         [HttpGet]
-        public Produto Consultar([FromUri] int id) =>
-            base.BLInjected.Consultar(id);
+        public Produto Consultar([FromUri] int id)
+        {
+            return base.BLInjected.Consultar(id);
+        }
+            
 
         [HttpPost]
-        public PaginaProduto Pagina([FromBody] PaginaProduto PaginaProduto) =>
-            base.BLInjected.ConsultarPorCategoria(PaginaProduto);
+        public PaginaProduto Pagina([FromBody] PaginaProduto PaginaProduto)
+        {
+            return base.BLInjected.ConsultarPorCategoria(PaginaProduto);
+        }
+            
     }
 }
