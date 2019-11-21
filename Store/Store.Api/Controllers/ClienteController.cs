@@ -18,7 +18,7 @@ namespace Store.Api.Controllers
         [HttpPost]
         public Cliente Inserir([FromBody] Cliente cliente)
         {
-            throw new NotImplementedException();
+            return this.BLInjected.Inserir(cliente);
         }
              
 
