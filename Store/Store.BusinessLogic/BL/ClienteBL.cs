@@ -31,6 +31,7 @@ namespace Store.BusinessLogic.BL
 
         public Cliente Inserir(Cliente cliente)
         {
+            cliente.Senha = HashMD5.GetHash(cliente.Senha);
             return this._clienteDao.Insert(cliente);
         }
 
