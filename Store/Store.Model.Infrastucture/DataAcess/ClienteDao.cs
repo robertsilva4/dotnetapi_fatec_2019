@@ -82,13 +82,19 @@ namespace Store.Model.Infrastucture.DataAcess
 
         public Cliente Select(int id)
         {
-            throw new NotImplementedException();
+            this.Sql.Append(" SELECT * FROM TB_CLIENTE ");
+            this.Sql.Append(" WHERE TB_CLIENTE.ID = @ID ");
+
+            this.AddParameter("@ID", id);
+
+            using (var DataReader = this.ExecuteReader())
+            {
+                return this.CastToObject(DataReader).FirstOrDefault();
+            }
         }
 
         public Cliente Select(Cliente cliente)
         {
-            this.SqlBase();
-
             this.Sql.Append(" SELECT * FROM TB_CLIENTE ");
             this.Sql.Append(" WHERE TB_CLIENTE.EMAIL = @EMAIL AND ");
             this.Sql.Append("       TB_CLIENTE.SENHA = @SENHA ");
